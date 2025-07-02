@@ -39,22 +39,20 @@ function showImages(images) {
 
   // Loop through each image and add it to the gallery
   images.forEach(image => {
+    let itemDiv = document.createElement('div');
+    itemDiv.className = 'apod-image';
     // Only show images (not videos)
     if (image.media_type === 'image') {
-      // Create a div for each image
-      const imgDiv = document.createElement('div');
-      imgDiv.className = 'apod-image';
-      // Add the image and title
-      imgDiv.innerHTML = `
+      itemDiv.innerHTML = `
         <img src="${image.url}" alt="${image.title}" />
         <p><strong>${image.title}</strong></p>
         <p>${image.date}</p>
       `;
       // Add click event to open modal
-      imgDiv.addEventListener('click', () => {
+      itemDiv.addEventListener('click', () => {
         openModal(image);
       });
-      gallery.appendChild(imgDiv);
+      gallery.appendChild(itemDiv);
     }
   });
 }
@@ -67,13 +65,22 @@ function openModal(image) {
   // Create modal content
   const modal = document.createElement('div');
   modal.className = 'modal';
-  modal.innerHTML = `
+  let modalContent = `
     <span class="modal-close">&times;</span>
-    <img src="${image.hdurl || image.url}" alt="${image.title}" class="modal-img" />
     <h2>${image.title}</h2>
     <p><strong>Date:</strong> ${image.date}</p>
     <p>${image.explanation}</p>
   `;
+  if (image.media_type === 'image') {
+    modalContent = `
+      <span class="modal-close">&times;</span>
+      <img src="${image.hdurl || image.url}" alt="${image.title}" class="modal-img" />
+      <h2>${image.title}</h2>
+      <p><strong>Date:</strong> ${image.date}</p>
+      <p>${image.explanation}</p>
+    `;
+  }
+  modal.innerHTML = modalContent;
   modalBg.appendChild(modal);
   document.body.appendChild(modalBg);
 
