@@ -85,14 +85,43 @@ function openModal(image) {
   });
 }
 
+// Fun space facts array
+const spaceFacts = [
+  "A day on Venus is longer than a year on Venus!",
+  "Neutron stars can spin at a rate of 600 rotations per second.",
+  "There are more trees on Earth than stars in the Milky Way.",
+  "The footprints on the Moon will be there for millions of years.",
+  "One million Earths could fit inside the Sun.",
+  "A spoonful of a neutron star weighs about a billion tons.",
+  "Jupiter has 95 known moons!",
+  "Space is completely silent—there's no air for sound to travel.",
+  "The hottest planet in our solar system is Venus.",
+  "Saturn could float in water because it’s mostly gas!"
+];
+
+// Pick a random fact
+const randomFact = spaceFacts[Math.floor(Math.random() * spaceFacts.length)];
+
+// Create and insert the fact section above the gallery
+const factSection = document.createElement('section');
+factSection.className = 'space-fact';
+factSection.innerHTML = `<strong>Did you Know?</strong> ${randomFact}`;
+const container = document.querySelector('.container');
+container.insertBefore(factSection, gallery);
+
 // When the button is clicked, fetch and show images
 getImagesButton.addEventListener('click', async () => {
   // Get the selected dates
   const startDate = startInput.value;
   const endDate = endInput.value;
 
-  // Show a loading message
-  gallery.innerHTML = '<p>Loading images...</p>';
+  // Show a NASA-styled loading spinner before fetching
+  gallery.innerHTML = `
+    <div class="nasa-spinner-container">
+      <div class="nasa-spinner"></div>
+      <p class="nasa-loading-text">Loading space photos…</p>
+    </div>
+  `;
 
   // Fetch images from NASA
   const images = await fetchNasaImages(startDate, endDate);
