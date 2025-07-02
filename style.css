@@ -142,3 +142,87 @@ button:hover {
   font-size: 48px;
   margin-bottom: 20px;
 }
+
+/* NASA Brand Modal Styles - Full Width */
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(12, 35, 64, 0.92); /* NASA blue, semi-transparent */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 96vw;
+  max-width: 1400px;
+  min-width: 0;
+  margin: 40px 0 40px 0;
+  max-height: none;
+  padding: 40px 4vw 32px 4vw;
+  box-shadow: 0 8px 40px rgba(12, 35, 64, 0.25);
+  position: relative;
+  overflow-y: auto;
+  text-align: center;
+  border: 4px solid #fc3d21; /* NASA red border */
+  font-family: 'Verdana', Arial, sans-serif;
+}
+
+.modal-img {
+  max-width: 90vw;
+  max-height: 60vh;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  border: 2px solid #0c2340; /* NASA blue border */
+  background: #f1f1f1;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-size: 2.2rem;
+  color: #fc3d21; /* NASA red */
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: #0c2340; /* NASA blue on hover */
+}
+
+.modal h2 {
+  color: #0c2340; /* NASA blue */
+  font-family: 'Verdana', Arial, sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+}
+
+.modal p {
+  color: #212121;
+  font-size: 1rem;
+  margin-bottom: 0.7em;
+  line-height: 1.5;
+}
+
+.modal strong {
+  color: #fc3d21; /* NASA red for emphasis */
+}
+
+@media (max-width: 700px) {
+  .modal {
+    width: 98vw;
+    padding: 16px 2vw 16px 2vw;
+  }
+  .modal-img {
+    max-width: 96vw;
+    max-height: 32vh;
+  }
+}
